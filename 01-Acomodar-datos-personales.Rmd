@@ -1,0 +1,33 @@
+---
+title: "Acomodar datos personales"
+author: "Elizabeth Cattaneo"
+date: "9/12/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**OBJETIVO**
+
+Juntar en una variable el Apellido y el Nombre de cada estudiante para las comisiones MM y VM. Esto no es tidy pero los demás JTPs de la cátedra tienen sus alumnos organizados así.
+
+Para pasar notas y demás chequeos tengo como id el número de legajo
+
+Parto de las listas ordenadas por número de legajo que usamos para tomar el parcial de julio.
+
+```{r}
+# importo librerias
+library(readxl)
+library(dplyr)
+```
+
+```{r}
+# importo datos
+martes <- read_xlsx("parcial_martes2022.xlsx", col_names = T)
+```
+
+
+
+
