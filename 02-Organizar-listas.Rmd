@@ -1,0 +1,52 @@
+---
+title: "Organizar listas"
+author: "Elizabeth Cattaneo"
+date: "9/12/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**OBJETIVO**
+
+1) Unificar estructura de la lista (Legajo en algunos turnos tiene /)
+2) Separar los alumnos en 3 listas:
+* promoción
+* 2do parcial
+* parcial integrador
+
+Importo por separado las listas de los turnos donde legajo tiene / y donde no para editar solo los Legajos que corresponde. Luego uno las 2 listas
+```{r}
+# importo librerias
+library(readxl)
+library(dplyr)
+```
+
+```{r}
+# importo datos a corregir
+lista <- read_xlsx("lista2P_2022.xlsx", col_names = T)
+```
+
+```{r}
+str(lista)
+```
+
+```{r}
+# elimino / de Legajo y creo LEGAJO
+lista$LEGAJO <- gsub("/", "", lista$Legajo)
+```
+
+```{r}
+# elimino Legajo
+lista <- lista %>% 
+  select(- Legajo)
+```
+
+```{r}
+# reordeno variables
+lista <- lista %>% 
+  select(1,2,5,3,4)
+```
+
