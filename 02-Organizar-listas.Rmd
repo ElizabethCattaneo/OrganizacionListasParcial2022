@@ -17,7 +17,9 @@ knitr::opts_chunk$set(echo = TRUE)
 * 2do parcial
 * parcial integrador
 
-Importo por separado las listas de los turnos donde legajo tiene / y donde no para editar solo los Legajos que corresponde. Luego uno las 2 listas
+Las listas de las comisiones 1, 3 y 5 no tienen barra en el Legajo, las demás comisiones si.
+Importo por separado las listas de los turnos donde legajo tiene / y donde no para editar solo los Legajos que corresponde. Luego uno las 2 listas.
+
 ```{r}
 # importo librerias
 library(readxl)
@@ -49,4 +51,40 @@ lista <- lista %>%
 lista <- lista %>% 
   select(1,2,5,3,4)
 ```
+
+```{r}
+# importo listas con Legajo ok
+listaLMV <- read_xlsx("ListaLMV.xlsx", col_names = T)
+```
+
+```{r}
+# unifico nombre variables
+listaLMV <- listaLMV %>% 
+  rename(LEGAJO = Legajo)
+```
+
+```{r}
+# uno las listas
+lista2P <- rbind(lista, listaLMV)
+```
+
+```{r}
+names(lista2P)
+```
+
+```{r}
+# renombro las variables
+lista2P <- lista2P %>% 
+  rename(Comision = "Comisión",
+         Apellido_y_Nombre = "Nombre y Apellido",
+         Nota_julio = "1P-Julio",
+         Condicion_julio = "cond 1P-Julio" 
+         )
+```
+
+Utilizando la variable Condicion_julio armo las listas según la condición de los alumnos.
+
+
+
+
 
