@@ -21,13 +21,28 @@ Parto de las listas ordenadas por número de legajo que usamos para tomar el par
 # importo librerias
 library(readxl)
 library(dplyr)
+library(tidyr)
 ```
 
 ```{r}
-# importo datos
+# importo datos 
 martes <- read_xlsx("parcial_martes2022.xlsx", col_names = T)
+viernes <- read_xlsx("parcial_viernes2022.xlsx", col_names = T)
 ```
 
+```{r}
+# creo nueva variable combinando Apellido y Nombre
+martes <- martes %>% 
+  unite("Apellido y Nombre", Apellido:Nombre, sep = ", ")
 
+viernes <- viernes %>% 
+  unite("Apellido y Nombre", Apellido:Nombre, sep = ", ")
+```
+
+```{r}
+write.table(martes, "parcial2_martes2022.xlsx", sep = ",", col.names = T, row.names = F)
+
+write.table(viernes, "parcial2_viernes2022.xlsx", sep = ",", col.names = T, row.names = F)
+```
 
 
