@@ -35,6 +35,7 @@ lista <- read_xlsx("lista2P_2022.xlsx", col_names = T)
 str(lista)
 ```
 
+**OBJ 1: unificar estructura**
 ```{r}
 # elimino / de Legajo y creo LEGAJO
 lista$LEGAJO <- gsub("/", "", lista$Legajo)
@@ -82,6 +83,8 @@ lista2P <- lista2P %>%
          )
 ```
 
+**OBJ 2:**
+
 Utilizando la variable Condicion_julio armo las listas según la condición de los alumnos.
 
 ```{r}
@@ -117,4 +120,22 @@ write.table(promocion, "promocion.xlsx", col.names = T, row.names = F)
 write.table(rinde2P, "rinde2P.xlsx", col.names = T, row.names = F)
 write.table(integrador, "integrador.xlsx", col.names = T, row.names = F)
 ```
+
+Recuentos para planificar como dividirlos por turnos.
+
+```{r}
+table(promocion$Comision)
+```
+
+```{r}
+table(rinde2P$Comision)
+```
+```{r}
+table(integrador$Condicion_julio)
+```
+
+
+
+
+
 
