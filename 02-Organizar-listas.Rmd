@@ -90,7 +90,8 @@ Utilizando la variable Condicion_julio armo las listas según la condición de l
 ```{r}
 # lista de promocion
 promocion <- lista2P %>% 
-  filter(Condicion_julio == "promociona")
+  filter(Condicion_julio == "promociona") %>% 
+  arrange(Comision)
 ```
 
 ```{r}
@@ -101,7 +102,8 @@ nrow(promocion)
 ```{r}
 # lista rinden 2do parcial
 rinde2P <- lista2P %>% 
-  filter(Condicion_julio == "regular")
+  filter(Condicion_julio == "regular") %>% 
+  arrange(Comision)
 ```
 
 ```{r}
@@ -111,7 +113,8 @@ nrow(rinde2P)
 ```{r}
 # lista rinden integrador
 integrador <- lista2P %>% 
-  filter(Condicion_julio == "insuficiente" | Condicion_julio == "ausente")
+  filter(Condicion_julio == "insuficiente" | Condicion_julio == "ausente") %>% 
+  arrange(Comision)
 ```
 
 ```{r}
