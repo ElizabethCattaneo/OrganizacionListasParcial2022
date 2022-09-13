@@ -84,7 +84,37 @@ lista2P <- lista2P %>%
 
 Utilizando la variable Condicion_julio armo las listas según la condición de los alumnos.
 
+```{r}
+# lista de promocion
+promocion <- lista2P %>% 
+  filter(Condicion_julio == "promociona")
+```
 
+```{r}
+# recuento alumnos para rendir promocion
+nrow(promocion)
+```
 
+```{r}
+# lista rinden 2do parcial
+rinde2P <- lista2P %>% 
+  filter(Condicion_julio == "regular")
+```
 
+```{r}
+# recuento alumnos para rendir 2P
+nrow(rinde2P)
+```
+```{r}
+# lista rinden integrador
+integrador <- lista2P %>% 
+  filter(Condicion_julio == "insuficiente" | Condicion_julio == "ausente")
+```
+
+```{r}
+# descargo las listas
+write.table(promocion, "promocion.xlsx", col.names = T, row.names = F)
+write.table(rinde2P, "rinde2P.xlsx", col.names = T, row.names = F)
+write.table(integrador, "integrador.xlsx", col.names = T, row.names = F)
+```
 
